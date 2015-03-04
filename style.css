@@ -22,10 +22,26 @@
 @media only screen and (min-device-width : 320px) and (max-device-width : 480px) {
 
 	#main {
+	display:block;
+	position:absolute;
+	font-size: 15px;
+	z-index: 10;
+	font-family: Helvetica, Times New Roman, sans-serif;
+
+	}
+
+	#text {
+		padding-top: 150px;
+		width:100px;
 		display:block;
-		font-size: 300%;
-		margin-left:auto;
-		padding-top: 50px;
+		margin-right: auto;
+		margin-left: auto;
+	}
+
+	#rainbg {
+	overflow: hidden;
+	position:absolute;
+	z-index: 9;
 	}
 }
 

@@ -8,12 +8,14 @@
 <body>
 
 <div id= "main">
-	<p>matt riley</p>
-	<p><a href="https://www.facebook.com/matt.riley.12764">facebook</a></p>
-	<p><a href="https://twitter.com/hanatweetslike">twitter</a></p>
-	<p><a href="https://soundcloud.com/hanasoundslike">soundcloud</a></p>
-	<p><a href="https://instagram.com/matt_riley/">instagram</a></p>
-	<p><a href="https://github.com/m-ttriley">github</a></p>
+<div id="text">
+	<p id="name">matt riley</p>
+	<p id="facebook"><a href="https://www.facebook.com/matt.riley.12764">facebook</a></p>
+	<p id="twitter"><a href="https://twitter.com/hanatweetslike">twitter</a></p>
+	<p id="soundcloud"><a href="https://soundcloud.com/hanasoundslike">soundcloud</a></p>
+	<p id="instagram"><a href="https://instagram.com/matt_riley/">instagram</a></p>
+	<p id="github"><a href="https://github.com/m-ttriley">github</a></p>
+	</div>
 </div>
 <div id="rainbg">
 
@@ -39,7 +41,8 @@ var createImage = function(id) { // puts all the image data into the slot in the
 	img.style.width = Math.floor((Math.random() * 17) + 10) + "px"; // randomized size
 	img.style.height = img.style.width;
 	bg.style.height = viewportheight + "px";
-	main.style.height = viewportheight + "px";
+	main.style.height = (viewportheight + 10) + "px";
+	main.style.width = (viewportwidth + 10) + "px";
 	return img;
 };
 
@@ -58,8 +61,9 @@ var moveDown = function(imgs) { // draws the current array
 	viewportheight = window.innerHeight - 10;
 	viewportwidth = window.innerWidth - 10;
 	bg.style.height = viewportheight + "px";
-	main.style.height = viewportheight + 'px';
+	main.style.height = (viewportheight + 10) + 'px';
 	bg.style.width = viewportwidth + "px";
+	main.style.width = (viewportwidth + 10) + "px";
 	while (bg.hasChildNodes()) { // gets rid of all the old raindrops
 		bg.removeChild(bg.lastChild);
 		var imagesmoved = []; // resets the array
