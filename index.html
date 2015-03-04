@@ -25,8 +25,8 @@ var animate; // used to call setTimeout
 var images = []; // array of rain pictures
 var bg = document.getElementById("rainbg");
 var main = document.getElementById("main");
-var viewportwidth = window.innerWidth - 5;
-var viewportheight = window.innerHeight - 5;
+var viewportwidth = window.innerWidth - 10;
+var viewportheight = window.innerHeight - 10;
 
 var createImage = function(id) { // puts all the image data into the slot in the array
 	var img = new Image();
@@ -44,7 +44,7 @@ var createImage = function(id) { // puts all the image data into the slot in the
 };
 
 var moveImgDown = function(picture) { // moves every picture in the array down the canvas 
-	if (parseInt(picture.style.top) >= 600) { // if the raindrop hits 600px, gets reset back to the top
+	if (parseInt(picture.style.top) >= viewportheight) { // if the raindrop hits 600px, gets reset back to the top
 		picture.style.top = "0px";
 		picture.style.left = Math.floor((Math.random() * viewportwidth) + 1) + "px";
 		return picture;
@@ -55,6 +55,11 @@ var moveImgDown = function(picture) { // moves every picture in the array down t
 	}
 }
 var moveDown = function(imgs) { // draws the current array
+	viewportheight = window.innerHeight - 10;
+	viewportwidth = window.innerWidth - 10;
+	bg.style.height = viewportheight + "px";
+	main.style.height = viewportheight + 'px';
+	bg.style.width = viewportwidth + "px";
 	while (bg.hasChildNodes()) { // gets rid of all the old raindrops
 		bg.removeChild(bg.lastChild);
 		var imagesmoved = []; // resets the array
@@ -63,11 +68,7 @@ var moveDown = function(imgs) { // draws the current array
 			bg.appendChild(moveImgDown(imgs[i])); // appends the raindrops moved down to the BG
 			imagesmoved.push(moveImgDown(imgs[i]));
 		}
-		viewportheight = window.innerHeight - 5;
-		viewportwidth = window.innerWidth - 5;
-		bg.style.height = viewportheight + "px";
-		main.style.height = viewportheight + 'px';
-		bg.style.width = viewportwidth + "px";
+		
 		animate = setTimeout(moveDown, 75, imagesmoved); // recurs the moveDown function every 75 seconds
 }		
 function init(){
