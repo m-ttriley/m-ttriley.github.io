@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+	<title>rayni</title>
+	<link rel="stylesheet" type="text/css" href="style.css">
+</head>
+<body>
+<div id="rainbg">
+<audio id="rainhit">
+
+<source src="rainsound.mp3" type="audio/mpeg">
+	
+</audio>
+
+
+
+
+</div>
+<script type="text/javascript">
+var animate;
+var images = [];
+var bg = document.getElementById("rainbg");
+var audio = document.getElementById("rainhit");
+var createImage = function(id) {
+	var img = new Image();
+	img = document.createElement("IMG");
+	img.src = "rain.png";
+	img.style.position = "relative";
+	img.id = id;
+	img.style.top = Math.floor((Math.random() * 600) + 1) + "px";
+	img.style.left = Math.floor((Math.random() * 1080) + 1) + "px";
+	img.style.width = Math.floor((Math.random() * 17) + 10) + "px";
+	img.style.height = img.style.width;
+	return img;
+};
+
+var moveImgDown = function(picture) {
+	if (parseInt(picture.style.top) >= 600) {
+		picture.style.top = "0px";
+		picture.style.left = Math.floor((Math.random() * 1080) + 1) + "px";
+		return picture;
+	}
+	else {
+		picture.style.top = parseInt(picture.style.top) + (Math.floor((Math.random() * 20) + 1)) + "px";
+		return picture;
+	}
+}
+
+var moveDown = function(imgs) {
+	while (bg.hasChildNodes()) {
+		bg.removeChild(bg.lastChild);
+		var imagesmoved = [];
+		audio.play();
+	}
+		for (i=0;i<100;i++) {
+
+			bg.appendChild(moveImgDown(imgs[i]));
+			console.log(moveImgDown(imgs[i]));
+			imagesmoved.push(moveImgDown(imgs[i]));
+
+
+		
+		}
+		
+		animate = setTimeout(moveDown, 75, imagesmoved);
+		console.log(imagesmoved);
+}		
+
+
+
+function init(){
+		for (var i=0;i<100;i++) {
+		images.push(createImage("rain" + i));
+		console.log(images[i]);
+		bg.appendChild(images[i]);
+
+}
+
+		
+		moveDown(images);
+
+		
+	
+
+
+	}
+	
+
+
+
+
+
+/*function moveDown() {
+	for (i=0;i<50;i++) {
+		if (rainarray[i].top >= 525) {
+			rainarray.push({
+			top:"0px",
+			left:Math.floor((Math.random() * 1000) + 1) + "px"
+		})
+
+		} else {
+			rainarray.push({
+		top: parseInt(rainarray[i].top) + 10 + "px"
+	});
+		bg.innerHTML = rainarray[i];
+	}
+	}
+	animate = setTimeout(moveDown,20);
+}
+
+*/
+
+/*function moveRight(){
+	if (parseInt(imgObj.style.top) < 525) {
+   imgObj.style.top = parseInt(imgObj.style.top) + 10 + 'px';
+   animate = setTimeout(moveRight,20); // call moveRight in 20msec
+} else {
+	clearTimeout(animate);
+	imgObj.style.top = "0px"
+	imgObj.style.left = Math.floor((Math.random() * 1000) + 1) + "px";
+}
+} */
+
+window.onload = init;
+</script>
+
+
+</body>
+</html>
