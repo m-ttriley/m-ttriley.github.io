@@ -8,7 +8,12 @@
 <body>
 
 <div id= "main">
-	Matt Riley
+	<p>matt riley</p>
+	<p><a href="https://www.facebook.com/matt.riley.12764">facebook</a></p>
+	<p><a href="https://twitter.com/hanatweetslike">twitter</a></p>
+	<p><a href="https://soundcloud.com/hanasoundslike">soundcloud</a></p>
+	<p><a href="https://instagram.com/matt_riley/">instagram</a></p>
+	<p><a href="https://github.com/m-ttriley">github</a></p>
 </div>
 <div id="rainbg">
 <audio id="rainhit">
@@ -34,7 +39,7 @@ var createImage = function(id) {
 	img.style.position = "relative";
 	img.id = id;
 	img.style.top = Math.floor((Math.random() * 600) + 1) + "px";
-	img.style.left = Math.floor((Math.random() * 1080) + 1) + "px";
+	img.style.left = Math.floor((Math.random() * 1000) + 1) + "px";
 	img.style.width = Math.floor((Math.random() * 17) + 10) + "px";
 	img.style.height = img.style.width;
 	return img;
@@ -43,7 +48,7 @@ var createImage = function(id) {
 var moveImgDown = function(picture) {
 	if (parseInt(picture.style.top) >= 600) {
 		picture.style.top = "0px";
-		picture.style.left = Math.floor((Math.random() * 1080) + 1) + "px";
+		picture.style.left = Math.floor((Math.random() * 1000) + 1) + "px";
 		return picture;
 	}
 	else {
@@ -56,12 +61,12 @@ var moveDown = function(imgs) {
 	while (bg.hasChildNodes()) {
 		bg.removeChild(bg.lastChild);
 		var imagesmoved = [];
-		audio.play();
+		//audio.play();
 	}
 		for (i=0;i<100;i++) {
 
 			bg.appendChild(moveImgDown(imgs[i]));
-			console.log(moveImgDown(imgs[i]));
+			
 			imagesmoved.push(moveImgDown(imgs[i]));
 
 
@@ -69,16 +74,16 @@ var moveDown = function(imgs) {
 		}
 		
 		animate = setTimeout(moveDown, 75, imagesmoved);
-		console.log(imagesmoved);
+		
 }		
 
 
 
 function init(){
 		for (var i=0;i<100;i++) {
-		main.style.opacity = i;
+		
 		images.push(createImage("rain" + i));
-		console.log(images[i]);
+		
 		bg.appendChild(images[i]);
 
 }
