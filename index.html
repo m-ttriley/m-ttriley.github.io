@@ -25,8 +25,8 @@ var animate; // used to call setTimeout
 var images = []; // array of rain pictures
 var bg = document.getElementById("rainbg");
 var main = document.getElementById("main");
-var viewportwidth = window.innerWidth;
-var viewportheight = window.innerHeight;
+var viewportwidth = window.innerWidth - 5;
+var viewportheight = window.innerHeight - 5;
 
 var createImage = function(id) { // puts all the image data into the slot in the array
 	var img = new Image();
@@ -38,6 +38,8 @@ var createImage = function(id) { // puts all the image data into the slot in the
 	img.style.left = Math.floor((Math.random() * viewportwidth) + 1) + "px";
 	img.style.width = Math.floor((Math.random() * 17) + 10) + "px"; // randomized size
 	img.style.height = img.style.width;
+	bg.style.height = viewportheight + "px";
+	main.style.height = viewportheight + "px";
 	return img;
 };
 
@@ -61,6 +63,11 @@ var moveDown = function(imgs) { // draws the current array
 			bg.appendChild(moveImgDown(imgs[i])); // appends the raindrops moved down to the BG
 			imagesmoved.push(moveImgDown(imgs[i]));
 		}
+		viewportheight = window.innerHeight - 5;
+		viewportwidth = window.innerWidth - 5;
+		bg.style.height = viewportheight + "px";
+		main.style.height = viewportheight + 'px';
+		bg.style.width = viewportwidth + "px";
 		animate = setTimeout(moveDown, 75, imagesmoved); // recurs the moveDown function every 75 seconds
 }		
 function init(){
