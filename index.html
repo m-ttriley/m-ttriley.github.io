@@ -2,7 +2,7 @@
 
 <html>
 <head>
-	<title><3 matt <3</title>
+	<title> <3 matt <3 </title>
 	<link rel="stylesheet" type="text/css" href="style.css">
 </head>
 <body>
@@ -16,126 +16,59 @@
 	<p><a href="https://github.com/m-ttriley">github</a></p>
 </div>
 <div id="rainbg">
-<audio id="rainhit">
-
-<source src="rainsound.mp3" type="audio/mpeg">
-	
-</audio>
-
-
-
 
 </div>
 <script type="text/javascript">
-var animate;
-var images = [];
+// defining initial variables:
+
+var animate; // used to call setTimeout
+var images = []; // array of rain pictures
 var bg = document.getElementById("rainbg");
-var audio = document.getElementById("rainhit");
 var main = document.getElementById("main");
-var createImage = function(id) {
+
+var createImage = function(id) { // puts all the image data into the slot in the array
 	var img = new Image();
 	img = document.createElement("IMG");
 	img.src = "rain.png";
 	img.style.position = "relative";
 	img.id = id;
-	img.style.top = Math.floor((Math.random() * 600) + 1) + "px";
+	img.style.top = Math.floor((Math.random() * 600) + 1) + "px"; // randomized X and Y value
 	img.style.left = Math.floor((Math.random() * 1000) + 1) + "px";
-	img.style.width = Math.floor((Math.random() * 17) + 10) + "px";
+	img.style.width = Math.floor((Math.random() * 17) + 10) + "px"; // randomized size
 	img.style.height = img.style.width;
 	return img;
 };
 
-var moveImgDown = function(picture) {
-	if (parseInt(picture.style.top) >= 600) {
+var moveImgDown = function(picture) { // moves every picture in the array down the canvas 
+	if (parseInt(picture.style.top) >= 600) { // if the raindrop hits 600px, gets reset back to the top
 		picture.style.top = "0px";
 		picture.style.left = Math.floor((Math.random() * 1000) + 1) + "px";
 		return picture;
 	}
-	else {
+	else { // moves the raindrop down by 1 to 20 pixels every 75 ms
 		picture.style.top = parseInt(picture.style.top) + (Math.floor((Math.random() * 20) + 1)) + "px";
 		return picture;
 	}
 }
-
-var moveDown = function(imgs) {
-	while (bg.hasChildNodes()) {
+var moveDown = function(imgs) { // draws the current array
+	while (bg.hasChildNodes()) { // gets rid of all the old raindrops
 		bg.removeChild(bg.lastChild);
-		var imagesmoved = [];
-		//audio.play();
+		var imagesmoved = []; // resets the array
 	}
 		for (i=0;i<100;i++) {
-
-			bg.appendChild(moveImgDown(imgs[i]));
-			
+			bg.appendChild(moveImgDown(imgs[i])); // appends the raindrops moved down to the BG
 			imagesmoved.push(moveImgDown(imgs[i]));
-
-
-		
 		}
-		
-		animate = setTimeout(moveDown, 75, imagesmoved);
-		
+		animate = setTimeout(moveDown, 75, imagesmoved); // recurs the moveDown function every 75 seconds
 }		
-
-
-
 function init(){
-		for (var i=0;i<100;i++) {
-		
-		images.push(createImage("rain" + i));
-		
+		for (var i=0;i<100;i++) { // fills the array with an initial set of images
+		images.push(createImage("rain" + i));		
 		bg.appendChild(images[i]);
-
-}
-
-		
+}		
 		moveDown(images);
-
-		
-	
-
-
 	}
-	
-
-
-
-
-
-/*function moveDown() {
-	for (i=0;i<50;i++) {
-		if (rainarray[i].top >= 525) {
-			rainarray.push({
-			top:"0px",
-			left:Math.floor((Math.random() * 1000) + 1) + "px"
-		})
-
-		} else {
-			rainarray.push({
-		top: parseInt(rainarray[i].top) + 10 + "px"
-	});
-		bg.innerHTML = rainarray[i];
-	}
-	}
-	animate = setTimeout(moveDown,20);
-}
-
-*/
-
-/*function moveRight(){
-	if (parseInt(imgObj.style.top) < 525) {
-   imgObj.style.top = parseInt(imgObj.style.top) + 10 + 'px';
-   animate = setTimeout(moveRight,20); // call moveRight in 20msec
-} else {
-	clearTimeout(animate);
-	imgObj.style.top = "0px"
-	imgObj.style.left = Math.floor((Math.random() * 1000) + 1) + "px";
-}
-} */
-
 window.onload = init;
 </script>
-
-
 </body>
 </html>
