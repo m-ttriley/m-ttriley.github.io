@@ -1,4 +1,6 @@
-#rainbg {
+@media (min-device-width : 480px) {
+
+	#rainbg {
 	overflow: hidden;
 	position:absolute;
 	z-index: 9;
@@ -15,3 +17,15 @@
 	position:absolute;
 	z-index: 10;
 }
+}
+
+@media only screen and (min-device-width : 320px) and (max-device-width : 480px) {
+
+	#main {
+		display:block;
+		font-size: 300%;
+		margin-left:auto;
+		padding-top: 50px;
+	}
+}
+
