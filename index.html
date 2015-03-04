@@ -6,6 +6,10 @@
 	<link rel="stylesheet" type="text/css" href="style.css">
 </head>
 <body>
+
+<div id= "main">
+	Matt Riley
+</div>
 <div id="rainbg">
 <audio id="rainhit">
 
@@ -22,6 +26,7 @@ var animate;
 var images = [];
 var bg = document.getElementById("rainbg");
 var audio = document.getElementById("rainhit");
+var main = document.getElementById("main");
 var createImage = function(id) {
 	var img = new Image();
 	img = document.createElement("IMG");
@@ -71,6 +76,7 @@ var moveDown = function(imgs) {
 
 function init(){
 		for (var i=0;i<100;i++) {
+		main.style.opacity = i;
 		images.push(createImage("rain" + i));
 		console.log(images[i]);
 		bg.appendChild(images[i]);
