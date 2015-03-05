@@ -24,14 +24,14 @@
 	#main {
 	display:block;
 	position:absolute;
-	font-size: 15px;
+	font-size: 20px;
 	z-index: 10;
 	font-family: Helvetica, Times New Roman, sans-serif;
 
 	}
 
 	#text {
-		padding-top: 150px;
+		padding-top: 200px;
 		width:100px;
 		display:block;
 		margin-right: auto;
