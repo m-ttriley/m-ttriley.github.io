@@ -41,8 +41,8 @@ var createImage = function(id) { // puts all the image data into the slot in the
 	img.style.width = Math.floor((Math.random() * 17) + 10) + "px"; // randomized size
 	img.style.height = img.style.width;
 	bg.style.height = viewportheight + "px";
-	main.style.height = (viewportheight + 10) + "px";
-	main.style.width = (viewportwidth + 10) + "px";
+	main.style.height = (viewportheight) + "px";
+	main.style.width = (viewportwidth) + "px";
 	return img;
 };
 
@@ -61,9 +61,9 @@ var moveDown = function(imgs) { // draws the current array
 	viewportheight = window.innerHeight - 10;
 	viewportwidth = window.innerWidth - 10;
 	bg.style.height = viewportheight + "px";
-	main.style.height = (viewportheight + 10) + 'px';
+	main.style.height = (viewportheight) + 'px';
 	bg.style.width = viewportwidth + "px";
-	main.style.width = (viewportwidth + 10) + "px";
+	main.style.width = (viewportwidth) + "px";
 	while (bg.hasChildNodes()) { // gets rid of all the old raindrops
 		bg.removeChild(bg.lastChild);
 		var imagesmoved = []; // resets the array
