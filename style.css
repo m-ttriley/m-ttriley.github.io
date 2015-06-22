@@ -1,36 +1,47 @@
-#originalpicture {
-    width: 1000px;
-    height: 1000px;
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
+@media (min-device-width : 480px) {
+
+	#rainbg {
+	overflow: hidden;
+	position:absolute;
+	z-index: 9;
+
 }
 
-#myCanvas {
-    width: 1000px;
-    height: 1000px;
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
+#main {
+	font-size: 12px;
+	z-index: 10;
+	position: relative;
+	margin-right: auto;
+	font-family: Helvetica, Times New Roman, sans-serif;
+	width: 100px;
+	position:absolute;
+	z-index: 10;
+}
 }
 
-.frontDiv {
-    width: 1000px;
-    height: 1000px;
-    margin-left: auto;
-    margin-right: auto;
-}
+@media only screen and (min-device-width : 320px) and (max-device-width : 480px) {
 
-.frontForm {
-    display: block;
-    width: 500px;
-    height: 500px;
-    margin-left: auto;
-    margin-right: auto;
-}
+	#main {
+	display:block;
+	position:absolute;
+	font-size: 35px;
+	z-index: 10;
+	font-family: Helvetica, Times New Roman, sans-serif;
 
-.formObject {
-    width: 100px;
-    height: 100px;
+	}
+
+	#text {
+		padding-top: 225px;
+		width:200px;
+		display:block;
+		margin-right: auto;
+		margin-left: auto;
+	}
+
+	#rainbg {
+	overflow: hidden;
+	position:absolute;
+	z-index: 9;
+	}
 }
 
