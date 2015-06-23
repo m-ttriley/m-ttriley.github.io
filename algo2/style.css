@@ -1,0 +1,36 @@
+#originalpicture {
+    width: 1000px;
+    height: 1000px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+#myCanvas {
+    width: 1000px;
+    height: 1000px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.frontDiv {
+    width: 1000px;
+    height: 1000px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.frontForm {
+    display: block;
+    width: 500px;
+    height: 500px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.formObject {
+    width: 100px;
+    height: 100px;
+}
+
