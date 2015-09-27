@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>pic // sl</title>
+	<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" rel="stylesheet" integrity="sha256-MfvZlkHCEqatNoGiOXveE8FIwMzZg4W85qfrfIFBfYc= sha512-dTfge/zgoMYpP7QbHy4gWMEGsbsdZeCXz7irItjcC3sPUFtf0kuFbDz/ixG7ArTxmDjLXDmezHubeNikyKGVyQ==" crossorigin="anonymous">
+	<script src="bower_components/jquery/dist/jquery.js"></script>
+	<script src="bower_components/paper/dist/paper-full.js"></script>
+	<script src="https://sdk.amazonaws.com/js/aws-sdk-2.2.4.min.js"></script>
+	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.0-beta.0/angular.min.js"></script>
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+
+	<style type="text/css">
+	html, body {
+		height: 100%;
+		width: 100%;
+	}
+	#background {
+		display: block;
+		position: absolute;
+        top: 0;
+		left: 0;
+		right: 0;
+        bottom: 0;
+		width: 100%;
+		height: 100%;
+		z-index: -1;
+		background-color: rgb(240, 240, 240);
+
+	}
+
+	#title {
+		padding-top: 80px;
+	}
+
+	#titletext {
+		font-size: 36px;
+		display: none;
+	}
+
+	#original {
+		max-height:100%; 
+		max-width:100%;
+	}
+
+	#content {
+		height: 100%;
+		width: 100%;
+	}
+
+	.col-md-5 {
+		height: 50%;
+	}
+	</style>
+</head>
+<body>
+	<div class="container">
+	<div id="title" class="row">
+	<p id="titletext" class="text-center"> pic // sl </p>
+	</div>
+	<div class="row" id="app">
+		<div class="col-md-5">
+			<img id="original" src="picture.jpg">
+		</div>
+
+		<div class="col-md-2">
+		</div>
+
+		<div class="col-md-5">
+		</div>
+	</div>
+	</div>
+				<canvas id="content" width="100%" height:"100%"></canvas>
+
+	<script type="text/paperscript" canvas="content">
+	var i = 0;
+	var j = 0;
+	var done = false;
+	var ready = false;
+// Create a raster item using the image tag with id='mona'
+var raster = new Raster('original');
+
+// Hide the raster:
+raster.visible = false;
+
+// The size of our grid cells:
+var gridSize = 50;
+
+// Space the cells by 120%:
+var spacing = 1.2;
+
+var current = 1;
+var count = 30 * 30;
+var temp;
+
+// As the web is asynchronous, we need to wait for the raster to load
+// before we can perform any operation on its pixels.
+raster.on('load', function() {
+
+	// Since the example image we're using is much too large,
+	// and therefore has way too many pixels, lets downsize it to
+	// 40 pixels wide and 30 pixels high:
+	raster.size = new Size(30, 30);
+
+	for (var y = 0; y < raster.height; y++) {
+		for(var x = 0; x < raster.width; x++) {
+			// Get the color of the pixel:
+			var color = raster.getPixel(x, y);
+
+			// Create a circle shaped path:
+		
+			var path = new Path.Circle({
+				center: new Point(x, y) * gridSize,
+				radius: gridSize / 2 / spacing
+			});
+
+			// Set the fill color of the path to the color
+			// of the pixel:
+			path.fillColor = color;
+		}
+	}
+
+	// Move the active layer to the center of the view, so all 
+	// the created paths in it appear centered.
+	project.activeLayer.position = view.center;
+	ready = true;
+});
+
+// Move the active layer to the center of the view:
+project.activeLayer.position = view.center;
+function onFrame(event) {
+	console.log(event.count);
+	if(ready) {
+		if(current < count - 1) {
+			var item = project.activeLayer.children[current];
+			var nextitem = project.activeLayer.children[current + 1];
+			if (item.fillColor.hue < nextitem.fillColor.hue) {
+				var tempx = item.position.x;
+				var tempy = item.position.y
+				item.position.x = nextitem.position.x;
+				item.position.y = nextitem.position.y;
+				nextitem.position.x = tempx;
+				nextitem.position.y = tempy; 
+			}
+			current++;
+		}
+		else {
+			current = 1;
+		}
+	}
+}
+	</script>
+</body>
+</html>
+
