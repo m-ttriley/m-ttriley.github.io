@@ -49,8 +49,17 @@
 		width: 100%;
 	}
 
-	.col-md-5 {
-		height: 50%;
+	#original {
+		height: 100%;
+		width: 100%;
+		display:block;
+		float: left;
+
+	}
+
+	#content {
+		display: block;
+		float: right;
 	}
 	</style>
 </head>
@@ -60,18 +69,10 @@
 	<p id="titletext" class="text-center"> pic // sl </p>
 	</div>
 	<div class="row" id="app">
-		<div class="col-md-5">
 			<img id="original" src="picture.jpg">
-		</div>
-
-		<div class="col-md-2">
-		</div>
-
-		<div class="col-md-5">
-		</div>
 	</div>
 	</div>
-				<canvas id="content" width="100%" height:"100%"></canvas>
+				<canvas id="content" width="50%" height:"50%"></canvas>
 
 	<script type="text/paperscript" canvas="content">
 	var i = 0;
@@ -85,7 +86,7 @@ var raster = new Raster('original');
 raster.visible = false;
 
 // The size of our grid cells:
-var gridSize = 50;
+var gridSize = 25;
 
 // Space the cells by 120%:
 var spacing = 1.2;
