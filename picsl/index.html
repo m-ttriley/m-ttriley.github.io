@@ -50,29 +50,33 @@
 	}
 
 	#original {
-		height: 100%;
-		width: 100%;
+		height: 40%;
+		width: 40%;
 		display:block;
 		float: left;
+		z-index: -1;
 
 	}
 
 	#content {
 		display: block;
+		width: 50%;
+		height: 100%;
 		float: right;
 	}
 	</style>
 </head>
 <body>
 	<div class="container">
+	<h1 class="text-center"> while I finish the back end, enjoy these dancing pixels </h1>
 	<div id="title" class="row">
 	<p id="titletext" class="text-center"> pic // sl </p>
 	</div>
 	<div class="row" id="app">
 			<img id="original" src="picture.jpg">
+			<canvas id="content" height="100%" width="100%"></canvas>
 	</div>
 	</div>
-				<canvas id="content" width="50%" height:"50%"></canvas>
 
 	<script type="text/paperscript" canvas="content">
 	var i = 0;
@@ -86,23 +90,21 @@ var raster = new Raster('original');
 raster.visible = false;
 
 // The size of our grid cells:
-var gridSize = 25;
+var gridSize = 8;
 
 // Space the cells by 120%:
 var spacing = 1.2;
 
 var current = 1;
-var count = 30 * 30;
+var count = 60 * 60;
 var temp;
 
 // As the web is asynchronous, we need to wait for the raster to load
 // before we can perform any operation on its pixels.
 raster.on('load', function() {
 
-	// Since the example image we're using is much too large,
-	// and therefore has way too many pixels, lets downsize it to
-	// 40 pixels wide and 30 pixels high:
-	raster.size = new Size(30, 30);
+
+	raster.size = new Size(60, 60);
 
 	for (var y = 0; y < raster.height; y++) {
 		for(var x = 0; x < raster.width; x++) {
@@ -131,9 +133,10 @@ raster.on('load', function() {
 // Move the active layer to the center of the view:
 project.activeLayer.position = view.center;
 function onFrame(event) {
-	console.log(event.count);
+	// console.log(event.count);
 	if(ready) {
-		if(current < count - 1) {
+		for(var i = 0; i < count; i++) {
+		if(current <= count - 1) {
 			var item = project.activeLayer.children[current];
 			var nextitem = project.activeLayer.children[current + 1];
 			if (item.fillColor.hue < nextitem.fillColor.hue) {
@@ -144,14 +147,14 @@ function onFrame(event) {
 				nextitem.position.x = tempx;
 				nextitem.position.y = tempy; 
 			}
-			current++;
+			current = current + 1;
 		}
 		else {
 			current = 1;
 		}
 	}
 }
+}
 	</script>
 </body>
 </html>
-

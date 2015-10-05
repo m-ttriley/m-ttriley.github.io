@@ -8,16 +8,6 @@
 <body>
 
 <div id= "main">
-<div id="text">
-    <p id="name">matthew riley</p>
-    <p id="twitter"><a href="https://twitter.com/_oliviasaid">twitter</a></p>
-    <p id="soundcloud"><a href="https://soundcloud.com/olivia">soundcloud</a></p>
-    <p id="instagram"><a href="https://instagram.com/matt_riley/">instagram</a></p>
-    <p id="github"><a href="https://github.com/m-ttriley">github</a></p>
-    <p id="linkedin"><a href="https://www.linkedin.com/pub/matthew-riley/b4/a88/855">linkedin</a></p>
-    <br>
-    <!--p id="my work"><a href="work.html">my work</a></p>-->
-</div>
 </div>
 <div id="rainbg">
 
@@ -49,13 +39,13 @@ var createImage = function(id) { // puts all the image data into the slot in the
 };
 
 var moveImgDown = function(picture) { // moves every picture in the array down the canvas 
-    if (parseInt(picture.style.top) >= viewportheight) { // if the raindrop hits 600px, gets reset back to the top
-        picture.style.top = "0px";
+    if (parseInt(picture.style.top) <= 0) { // if the raindrop hits 600px, gets reset back to the top
+        picture.style.top = viewportheight + "px";
         picture.style.left = Math.floor((Math.random() * viewportwidth) + 1) + "px";
         return picture;
     }
     else { // moves the raindrop down by 1 to 20 pixels every 75 ms
-        picture.style.top = parseInt(picture.style.top) + (Math.floor((Math.random() * 20) + 1)) + "px";
+        picture.style.top = parseInt(picture.style.top) - (Math.floor((Math.random() * 20) + 1)) + "px";
         return picture;
     }
 }
@@ -75,7 +65,7 @@ var moveDown = function(imgs) { // draws the current array
             imagesmoved.push(moveImgDown(imgs[i]));
         }
         
-        animate = setTimeout(moveDown, 75, imagesmoved); // recurs the moveDown function every 75 seconds
+        animate = setTimeout(moveDown, 75, imagesmoved); // recurs the moveDown function every 75ms
 }       
 function init(){
         for (var i=0;i<100;i++) { // fills the array with an initial set of images
