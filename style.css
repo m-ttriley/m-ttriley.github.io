@@ -1,5 +1,6 @@
 @media (min-device-width : 480px) {
 
+
 	#rainbg {
 	overflow: hidden;
 	position:absolute;
@@ -16,6 +17,24 @@
 	width: 100px;
 	position:absolute;
 	z-index: 10;
+}
+
+
+
+.item img {
+	display: block;
+	height: 200px;
+	width: 200px;
+	margin-right: auto;
+	margin-left: auto;
+}
+
+.item a {
+	overflow: hidden;
+}
+
+.item p {
+	text-align: center;
 }
 }
 
