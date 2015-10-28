@@ -1,3 +1,14 @@
+  var TitleBar = React.createClass({
+    render: function() {
+      return (
+        <div>
+          <Signup url="/api/register" />
+          <p> h a c k //  p o t // b e a n </p>
+        </div>
+        );
+    }
+  })
+
   var Signup = React.createClass({
 
     handleSignup: function(data) {
@@ -52,4 +63,4 @@
       }
   });
 
-  React.render(<Signup url="/api/register" />, document.getElementById("content"));
+  React.render(<TitleBar />, document.getElementById("content"));
