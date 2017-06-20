@@ -19,7 +19,15 @@
 	z-index: 10;
 }
 
+#text {
+	display: block;
+	float: left;
+}
 
+#letter {
+	display: block;
+	float: right;
+}
 
 .item img {
 	display: block;
