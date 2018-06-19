@@ -19,6 +19,14 @@
 	z-index: 10;
 }
 
+#art-list {
+	padding-left: 10px;
+	list-style: none;
+}
+
+li {
+	margin-top: 10px;
+}
 #text {
 	display: block;
 	float: left;
