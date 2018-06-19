@@ -1,11 +1,10 @@
 @media (min-device-width : 480px) {
 
 
-	#rainbg {
+#rainbg {
 	overflow: hidden;
 	position:absolute;
-	z-index: 9;
-
+	z-index: -10000;
 }
 
 #main {
@@ -76,7 +75,7 @@ li {
 	#rainbg {
 	overflow: hidden;
 	position:absolute;
-	z-index: 9;
+	z-index: -1000;
 	}
 }
 
